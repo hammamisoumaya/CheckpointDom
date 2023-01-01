@@ -1,0 +1,50 @@
+body{
+    background-color:blueviolet
+}
+
+
+
+.Partie1 h1{
+    padding-left: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 40px;
+    text-align: center;
+}
+
+
+.delete{
+    margin: 40px 100px;
+    background: white;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.delete,
+  .btn-like,
+  .btn-plus,
+  .btn-moins {
+    border: none;
+    background: none;
+    outline: 0;
+  }
+
+  .delete:focus,
+  .btn-like:focus,
+  .btn-plus:focus,
+  .btn-moins:focus {
+    outline: 0;
+  }
+
+
+
+
+  .article{
+    font-size: larger;
+    font-weight: 500;
+  }
+
+
+  .fa-heart{
+    color: gray;
+  }
