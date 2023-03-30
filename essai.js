@@ -1,93 +1,59 @@
-var btnmoins = document.getElementsByClassName('btn-moins')
+let ajou =document.getElementsByClassName("up");
+for (let plus of ajou){
+    plus.addEventListener('click',function(){
+        plus.previousElementSibling.innerHTML++;
+        let prix = plus.parentElement.previousElementSibling.firstElementChild.firstElementChild.innerHTML;
+        const currTot = parseFloat(document.getElementById('total').innerHTML);
+        tot = currTot + parseFloat(prix);
+        document.getElementById('total').innerHTML = tot;
+        const productTotal = plus.previousElementSibling.innerHTML * parseFloat(prix);
+        plus.parentElement.nextElementSibling.firstElementChild.firstElementChild.innerHTML = productTotal;
+    }); }
 
-console.log('btnmoins',btnmoins)
-
-
-
-for (let i=0;i<btnmoins.length;i++){
-
-    btnmoins[i].addEventListener('click',function(){
-    if(btnmoins[i].nextElementSibling.innerText > 0)
-    {btnmoins[i].nextElementSibling.innerText --
+let minus=document.getElementsByClassName("down");
+for (let min of minus){
+    min.addEventListener('click',function(){
+        const repeated = min.nextElementSibling;
+        if(repeated.innerHTML> 0) {
+        repeated.innerHTML--;
+        let prix = min.parentElement.previousElementSibling.firstElementChild.firstElementChild.innerHTML;
+        const currTot = parseFloat(document.getElementById('total').innerHTML);
+        tot = currTot - parseFloat(prix);
+        document.getElementById('total').innerHTML = tot;
+        const productTotal = min.nextElementSibling.innerHTML * parseFloat(prix);
+        min.parentElement.nextElementSibling.firstElementChild.firstElementChild.innerHTML = productTotal;
     }
-    //update apres click de moins et une verification si le span est a 0 ou nn 
-    totalPrice()
-    }
-    )
-    }
-    
-    var btnplus = document.getElementsByClassName('btn-plus')
-    console.log('btnplus',btnplus)
-    
-    
-    for (let j=0;j<btnplus.length ; j++){
-    btnplus[j].addEventListener('click',function(){
-        btnplus[j].previousElementSibling.innerText ++
-        //update apres   click de plus 
-        totalPrice()
+    });
+}
+
+let deletes = document.getElementsByClassName('bi-bag-x-fill');
+for(let del of deletes) {
+    del.addEventListener('click', function() {
+      let parentToDelete = del.parentElement.parentElement;
+      const prix = del.parentElement
+        .nextElementSibling
+        .nextElementSibling
+        .nextElementSibling
+        .nextElementSibling
+        .nextElementSibling
+        .firstElementChild
+        .firstElementChild
+        .innerHTML
+    const currTot = parseFloat(document.getElementById('total').innerHTML);
+    tot = currTot - parseFloat(prix);
+    document.getElementById('total').innerHTML = tot;
+      parentToDelete.remove();
     })
-    
-    }
-    
-    //partie coeur 
-    
-    var heartbtn = document.getElementsByClassName('fa-heart')
-    
-    console.log('hearts',heartbtn)
-    
-    for ( let btn of heartbtn){
-        btn.addEventListener('click',function(){
-            if(btn.style.color === "gray"){
-                btn.style.color = "red"
-            }else{
-                btn.style.color = "gray"
-            }
-        })
-    }
-    
-    
-    
-    
-    //partie croix 
-    
-    var deletbtn = document.querySelectorAll('.delete')
-    console.log('delet',deletbtn)
-    
-    for (let k=0;k<deletbtn.length;k++){
-    
-    deletbtn[k].addEventListener('click',()=>{
-    deletbtn[k].parentElement.parentElement.remove()
-    
-    //update de la totalite de mon pannier 
-    
-    totalPrice()
-    })
-    
-    
-    }
-    
-    //total price 
-    
-    function totalPrice(){
-    
-    //get element price 
-    var productPrice = document.getElementsByClassName('prx')
-    
-    console.log('prx',productPrice)
-    
-    var productQuatity = document.getElementsByClassName('quantity')
-    console.log('quantity',productQuatity)
-    
-    let sum = 0
-    
-    for (let i=0 ; i<productPrice.length ; i++){
-    
-    sum += productPrice[i].innerText * productQuatity[i].innerText
-    
-    }
-    
-    document.getElementById('prix-total').innerText = sum
-    
-    
-    
-    }
+};
+
+let hearts = document.querySelector('.bi-emoji-heart-eyes-fill');
+for (heart of hearts) {
+  heart.addEventListener('click', function() {
+    console.log("ur stupid");
+       if(heart.style.color="red") {
+        heart.style.color="currentColor";
+      } else if(heart.style.color !== 'red'){
+        heart.style.color = 'red'
+       }
+  })
+}
